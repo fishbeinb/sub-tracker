@@ -199,6 +199,7 @@ def run_main_collector(transactions):
 					# cur_return_charges.append({"title": str(charge[0].title), "date": str(charge[0].date.date()), "cost": "$" + str(charge[0].cost)})
 					cur_return_charges += str(charge[0].title) + " " + str(charge[0].date.date()) + " " + str(charge[0].cost) + "<br>"
 				else:
+					cur_return_charges += "MISS - NO CHARGE THIS WEEK/MONTH" + "<br>"
 					print "MISS - NO CHARGE THIS WEEK/MONTH"
 			weeks_or_months = str(best_path[-1].jump["months"]) + " month(s)" if "months" in best_path[-1].jump else str(best_path[-1].jump["weeks"]) + " weeks(s)"
 			return_charge_description = "Looks like you have a recuring charge to " + str(charge[0].title) + " for $" + str(charge[0].cost) + " repeating every " + weeks_or_months + ". The next charge should occur on " + str((charge[0].date + relativedelta(**best_path[-1].jump)).date())
